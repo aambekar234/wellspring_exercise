@@ -95,7 +95,10 @@ $error_message = "Invalid File! Please upload only valid csv files.";
        <?php if($error_message!= "") { echo "<h4>$error_message<h4><br><br>";} ?>
 
         <button type="button" class="btn btn-primary" id="addnewrow" data-toggle="modal" data-target="#addnewrow_modal">Add new row</button>
+<<<<<<< HEAD
         <button type="button" class="btn btn-warning" id="editrow">Edit Selected Row</button>
+=======
+>>>>>>> master
         <button type="button" class="btn btn-danger" id="removerow">Remove Selected Row</button>
         <button type="button" class="btn btn-success" id="uploadcsv" data-toggle="modal" data-target="#upload_csv_modal">Upload new csv file</button>
         <br><br>
@@ -147,6 +150,7 @@ $error_message = "Invalid File! Please upload only valid csv files.";
     </div>
   </div>
 
+<<<<<<< HEAD
 
   <!--modal edit row -->
   <div class="modal" tabindex="-1" role="dialog" id="editrow_modal">
@@ -188,6 +192,8 @@ $error_message = "Invalid File! Please upload only valid csv files.";
   </div>
 </div>
 
+=======
+>>>>>>> master
   <!--modal upload csv -->
   <div class="modal" tabindex="-1" role="dialog" id="upload_csv_modal">
   <div class="modal-dialog" role="document">
@@ -225,6 +231,7 @@ $error_message = "Invalid File! Please upload only valid csv files.";
      <script>
      $(document).ready( function () {
 
+<<<<<<< HEAD
 
        var selectd_row= -1;
       var err = "<?php echo $error_message;?>";
@@ -237,6 +244,17 @@ $error_message = "Invalid File! Please upload only valid csv files.";
                 "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
                  data: dataset,
                  destroy: true,
+=======
+      var err = "<?php echo $error_message;?>";
+      console.log(err);
+
+      if(err=="")
+      {
+        var dataset = <?php echo json_encode($table_data); ?>;
+        $('#train_table').DataTable( {
+                "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
+                 data: dataset,
+>>>>>>> master
                  columns:[{title:"Train Line"}, {title:"Route"}, {title:"Run Number"}, {title:"Operator ID"}]
             } );
 
@@ -250,6 +268,7 @@ $error_message = "Invalid File! Please upload only valid csv files.";
             var operator_id = $("#opearator_id").val();
 
             var train_table = $("#train_table").DataTable();
+<<<<<<< HEAD
             if(train_line!="" && route !="" && run_number!="" && operator_id!="")
             {
               train_table.row.add([train_line, route, run_number, operator_id]).draw(false);
@@ -295,6 +314,9 @@ $error_message = "Invalid File! Please upload only valid csv files.";
             }
 
 
+=======
+            train_table.row.add([train_line, route, run_number, operator_id]).draw(false);
+>>>>>>> master
 
       });
 
@@ -314,6 +336,7 @@ $error_message = "Invalid File! Please upload only valid csv files.";
           $('#removerow').click( function () {
 
               var train_table = $("#train_table").DataTable();
+<<<<<<< HEAD
 
               console.log(train_table.row('.selected').data());
               console.log(train_table.row('.selected').index());
@@ -338,6 +361,11 @@ $error_message = "Invalid File! Please upload only valid csv files.";
 
               $('#editrow_modal').modal('toggle');
 
+=======
+              train_table.row('.selected').remove().draw( false );
+
+
+>>>>>>> master
 
           } );
 
